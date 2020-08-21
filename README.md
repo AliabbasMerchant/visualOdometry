@@ -1,7 +1,8 @@
 # Visual Odometry 
 
+![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/MainBot.png?raw=true)
 
-[Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/documentation/documentation.pdf)
+[Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Documentation/documentation.pdf)
 
 
 ## CONTENTS
