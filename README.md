@@ -78,8 +78,9 @@ reconstruction.
 
 Depth perception using stereo cameras is done in the following way:
 
-![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/Stereo.png?raw=true)
+```Click on Image to Visit```
 
+[![](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/Stereo.png?raw=true)](https://en.wikipedia.org/wiki/Computer_stereo_vision)
 
 
 
