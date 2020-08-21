@@ -1,19 +1,18 @@
 # Visual Odometry 
-[Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/README.pdf)
 
-# VISUAL ODOMETRY
 
-## (Autonomous Navigation Bot)
+[Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/documentation/documentation.pdf)
+
 
 ## CONTENTS
 
-- INTRODUCTION
-- TECHNICAL BACKGROUND
-- PROPOSED SOLUTION/IMPLEMENTATION/WORKING
-- CHALLENGES, RESTRICTIONS AND LIMITATIONS
-- HARDWARE USED
-- CONCLUSION
-- REFERENCES
+- Introduction
+- Technical Background
+- Implementation
+- Challenges and Restrictions
+- Hardware Stack
+- Conclusion
+- References
 
 
 ## INTRODUCTION
@@ -25,23 +24,30 @@ been used in a wide variety of robotic applications.
 Algorithm:
 
 1. Acquire input images
+
 2. Image correction (apply image processing techniques for noise removal, etc.)
-3. Feature detection (define interest operators, and match features across
-    frames) (Use of feature extraction and correlation to establish
-    correspondence of two images).
-4. Estimation of shortest path to destination and issuing instruction set for
-    robotic maneuver.
+
+3. Feature detection (define interest operators, and match features across frames) (Use of feature extraction and correlation to establish correspondence of two images).
+
+4. Estimation of shortest path to destination and issuing instruction set for robotic maneuver.
+
 
 ## TECHNICAL BACKGROUND
 
-Computer Vision
+### Computer Vision
 
 Exploration is an important and active area of research in field robotics, as vehicles
 capable of autonomous exploration have the potential to significantly impact a wide
 range of applications such as search and rescue operations, environmental
 monitoring, and planetary exploration. For this work, we define the ​ _exploration
-problem_ ​as 1) covering an unknown environment,2) mapping the area, and 3)
-detecting objects of interest. Therefore the key component of robotic exploration are
+problem_ ​as 
+1) covering an unknown environment
+
+2) mapping the area
+
+3) detecting objects of interest.
+
+ Therefore the key component of robotic exploration are
 vision systems. Several ways can be used to achieve computer vision, like visual
 odometry with image processing, machine learning, convolutional neural networks,
 etc. In the scope of this project we used the former for the tasks mentioned above.
@@ -49,16 +55,13 @@ etc. In the scope of this project we used the former for the tasks mentioned abo
 There are three main challenges present in a complete solution to the exploration
 problem. First, the approach should maintain a globally consistent map over long
 distances with mainly relative measurement information and intermittent absolute
-measurements, like magnetometers. Second, the solution should reliably identify
-
-
-potential objects of interest at as great a range as possible to minimize the time
+measurements, like magnetometers. Second, the solution should reliably identify potential objects of interest at as great a range as possible to minimize the time
 spent sweeping an environment for candidate objects, as well as identify objects of
 interest in varying lighting and environmental conditions. Finally, a method to plan
 an efficient search path over a terrain with unknown obstacles and contours is
 required. The first two are discussed next and third is discussed in a separate section.
 
-Stereo Cameras and Depth Perception
+### Stereo Cameras and Depth Perception
 
 Using the aforementioned techniques of image processing, the tasks of detection
 and mapping of an unknown area were achieved. Stereo Vision refers to 3D vision. In
@@ -68,10 +71,10 @@ reconstruction.
 
 Depth perception using stereo cameras is done in the following way:
 
+[Source](​https://en.wikipedia.org/wiki/Computer_stereo_vision)
 
-(Source: ​https://en.wikipedia.org/wiki/Computer_stereo_vision​)
 
-Path Finding
+### Path Finding
 
 The aforementioned approach needs to accomplish the objective to reach the goal
 from the current position. Autonomous navigation using visual odometry utilizes
@@ -96,16 +99,22 @@ i.e. a ​ _heuristic cost_ ​, which helps us know if we are en route towards 
 The heuristic we chose was the ​ _Manhattan norm_ ​ which is, given nodes a(to be visited
 node) and b(destination) is:
 
-_heuristic_cost = (a.x - b.x) + (a.y - b.y)_
+```cpp
+heuristic_cost = (a.x - b.x) + (a.y - b.y)
+```
+
 
 Hence the final cost of any node traversal is :
-
-_cost = cost_so_far + weight_of_node_
+```cpp
+cost = cost_so_far + weight_of_node
+```
 
 And hence the priority of the neighboring node in the queue structure nodes_to_visit
 is:
 
-_priority = cost+heuristic_cost_
+```cpp
+priority = cost+heuristic_cost
+```
 
 This node is then pushed into the queue according to priority.
 
@@ -139,7 +148,7 @@ with enormous amounts of data. Other fields like heuristics are also rising with
 semi-rule-based algorithms making the trade-off between speed and accuracy.
 
 
-## PROPOSED SOLUTION/ ​ IMPLEMENTATION/WORKING
+## Implementation
 
 The bot works in the following way:
 
@@ -186,10 +195,8 @@ Detected Path: [True, 0], [True, 0], [False, -90], [True, 0], [False, 90], [True
     that the bot can be rotated the desired number of degrees.
 9. The bot finally reaches its destination.
 
-_[A sample video of the bot navigating to its destination, (in the presence of 1 object),
-has been attached along with this document.]_
 
-## CHALLENGES, RESTRICTIONS AND LIMITATIONS
+## Challenges, Restrictions and Limitations
 
 1. The processing on Raspberry Pi is very slow, so we can’t process the camera
     feed live. Hence, we take the images, only once, at the start, and then we
@@ -204,20 +211,20 @@ has been attached along with this document.]_
     of the bot wheels.
 
 
-## HARDWARE USED
+## Hardware Stack
 
 1. Raspberry Pi 3 B
 2. SRA Development Board
-3. Magnetometer
+3. Magnetometer (QMC5883L)
 4. 4x GearMotors
 5. 2x USB Camera
 6. Li-ion battery
 7. Powerbank
-8. CP
+8. CP2102 (USB to UART)
 9. 4-wheel generic bot chassis
 
 
-## CONCLUSION
+## Conclusion
 
 This project enabled an extremely fruitful utilization of our summer and also helped
 further our understanding of autonomous vehicles. The team understood the
@@ -229,27 +236,29 @@ not to mention the loss of faith of the general public in the industry.
 The primary deliverable of this project, an autonomous delivery robot, was
 successfully realized. The team would love to pursue several improvements in the
 both the software and hardware design of the bot and have it tested in real scenarios
-to automate the delivery of small to medium sized articles in confined places like
-
-## restaurants and offices.
+to automate the delivery of small to medium sized articles in confined places like restaurants and offices.
 
 ## REFERENCES
 
-https://www.redblobgames.com/pathfinding/a-star/introduction.html
 
-[http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++](http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++)
--wrapping.html
+[A* algorithm](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 
-https://www.geeksforgeeks.org/a-search-algorithm/
+[A* GeeksForGeeks](https://www.geeksforgeeks.org/a-search-algorithm/)
 
-[http://opencv-python-tutroals.readthedocs.io/en/latest/](http://opencv-python-tutroals.readthedocs.io/en/latest/)
+[Python C++ wrapping](http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++-wrapping.html)
 
-https://docs.opencv.org/3.0-beta/index.html
+[OpenCV](http://opencv-python-tutroals.readthedocs.io/en/latest/)
 
-https://www.pyimagesearch.com/
+[PyImageSearch](https://www.pyimagesearch.com/)
 
-https://en.wikipedia.org/wiki/Computer_stereo_vision
+[Computer Stereo Vision](https://en.wikipedia.org/wiki/Computer_stereo_vision)
 
-https://github.com/keepworking/Mecha_QMC5883L
+[Magnetometer API](https://github.com/keepworking/Mecha_QMC5883L)
+
+
+
+
+
+
 
 
