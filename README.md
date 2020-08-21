@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/MainBot.png?raw=true)
 
-[Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Documentation/documentation.pdf)
+[Original Documentation](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Documentation/documentation.pdf)
 
 
 ## CONTENTS
@@ -16,7 +16,7 @@
 - References
 
 
-## INTRODUCTION
+## Introduction
 
 In robotics and computer vision, visual odometry is the process of determining the
 position and orientation of a robot by analyzing the associated camera images. It has
@@ -32,8 +32,12 @@ Algorithm:
 
 4. Estimation of shortest path to destination and issuing instruction set for robotic maneuver.
 
+## See it in Action
 
-## TECHNICAL BACKGROUND
+[![Watch the video](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/YT.png?raw=True)](https://www.youtube.com/watch?v=pHNnnHZkUd4&feature=youtu.be)
+
+
+## Techincial Background
 
 ### Computer Vision
 
@@ -72,7 +76,9 @@ reconstruction.
 
 Depth perception using stereo cameras is done in the following way:
 
-[Source](​https://en.wikipedia.org/wiki/Computer_stereo_vision)
+![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/Stereo.png?raw=true)
+
+
 
 
 ### Path Finding
@@ -133,7 +139,7 @@ signifying whether to move or not, and the second being the angle of rotation
 needed to reach the next node. Thus after parsing through the shortest path, a
 complete set of instructions to reach the goal was ready.
 
-Artificial Intelligence
+### Artificial Intelligence
 
 The above mentioned approach can be encapsulated under the domain of AI since
 the approach allows the robot to travel autonomously without human intervention.
@@ -158,16 +164,24 @@ The bot works in the following way:
 1. It takes a picture of its surroundings using dual cameras and applies noise
     reduction techniques to filter out the noise. The below 2 images are the ones
     which have been captured by the cameras and processed.
+
+    ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/1.png?raw=true)
+
 2. The bot (using Raspberry Pi and OpenCV via Python) then converts the 2
     images from BGR to HSV format.
+
+    ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/2.png?raw=true)
 
 
 3. Assuming ideal conditions (uniform ground and uniform background), the
     background and ground are then removed from the image. The resulting
     images are:
+
+    ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/3.png?raw=true)
 4. Contours are detected in the resulting images and the contours are matched,
     so as to match the images of the same object in both the cameras.
 
+    ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/4.png?raw=true)
 
 5. The distance, height, and other properties of the object are then calculated
     using the detected object contours.
@@ -179,14 +193,16 @@ The bot works in the following way:
     the objects lie on the boundaries of the blocks of the map, and hence occupy
     not 1, but parts of both the blocks.)
 
+    ![alt text](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/6.png?raw=true)
+
 
 7. Now, using the A-Star algorithm, the best route from the bot(denoted by 2) to
     the destination(denoted by 3) is calculated. (​The first term is a boolean value
     signifying whether to move or not, and the second value is the angle of
     rotation(anticlockwise positive) needed to reach the next node.​)
 
-Detected Path: [True, 0], [True, 0], [False, -90], [True, 0], [False, 90], [True, 0], [True,
-0], [True, 0], [True, 0], [True, 0], [True, 0], [False, -270] ,[True, 0]
+Detected Path: ```[True, 0], [True, 0], [False, -90], [True, 0], [False, 90], [True, 0], [True,
+0], [True, 0], [True, 0], [True, 0], [True, 0], [False, -270] ,[True, 0]```
 
 8. Each action in the path of the bot is then executed. The movement/rotation
     command is then sent from Raspberry Pi to Arduino, using UART. For each
