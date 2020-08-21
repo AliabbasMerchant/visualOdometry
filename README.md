@@ -7,13 +7,15 @@
 
 ## CONTENTS
 
-- Introduction
-- Technical Background
-- Implementation
-- Challenges and Restrictions
-- Hardware Stack
-- Conclusion
-- References
+- [Introduction](#Introduction)
+- [Demo](#Demo)
+- [Technical Background](#Techincial-Background)
+- [Implementation](#Implementation)
+- [Challenges and Restrictions](#Challenges)
+- [Software Stack](#Software-Stack)
+- [Hardware Stack](#Hardware-Stack)
+- [Conclusion](#Conclusion)
+- [References](#References)
 
 
 ## Introduction
@@ -32,12 +34,12 @@ Algorithm:
 
 4. Estimation of shortest path to destination and issuing instruction set for robotic maneuver.
 
-## See it in Action
+## Demo
 
 [![Watch the video](https://github.com/AliabbasMerchant/visualOdometry/blob/master/Images/YT.png?raw=True)](https://www.youtube.com/watch?v=pHNnnHZkUd4&feature=youtu.be)
 
 
-## Techincial Background
+## Techincial-Background
 
 ### Computer Vision
 
@@ -213,7 +215,7 @@ Detected Path: ```[True, 0], [True, 0], [False, -90], [True, 0], [False, 90], [T
 9. The bot finally reaches its destination.
 
 
-## Challenges, Restrictions and Limitations
+## Challenges
 
 1. The processing on Raspberry Pi is very slow, so we can’t process the camera
     feed live. Hence, we take the images, only once, at the start, and then we
@@ -227,8 +229,14 @@ Detected Path: ```[True, 0], [True, 0], [False, -90], [True, 0], [False, 90], [T
 5. The angle of rotation of the bot is sometimes not accurate, because of slipping
     of the bot wheels.
 
+## Software-Stack
+1. Python3
+2. OpenCV
+3. PySerial
 
-## Hardware Stack
+
+
+## Software-Stack
 
 1. Raspberry Pi 3 B
 2. SRA Development Board
@@ -255,22 +263,22 @@ successfully realized. The team would love to pursue several improvements in the
 both the software and hardware design of the bot and have it tested in real scenarios
 to automate the delivery of small to medium sized articles in confined places like restaurants and offices.
 
-## REFERENCES
+## References
 
 
-[A* algorithm](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
+- [A* algorithm](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 
-[A* GeeksForGeeks](https://www.geeksforgeeks.org/a-search-algorithm/)
+- [A* GeeksForGeeks](https://www.geeksforgeeks.org/a-search-algorithm/)
 
-[Python C++ wrapping](http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++-wrapping.html)
+- [Python C++ wrapping](http://intermediate-and-advanced-software-carpentry.readthedocs.io/en/latest/c++-wrapping.html)
 
-[OpenCV](http://opencv-python-tutroals.readthedocs.io/en/latest/)
+- [OpenCV](http://opencv-python-tutroals.readthedocs.io/en/latest/)
 
-[PyImageSearch](https://www.pyimagesearch.com/)
+- [PyImageSearch](https://www.pyimagesearch.com/)
 
-[Computer Stereo Vision](https://en.wikipedia.org/wiki/Computer_stereo_vision)
+- [Computer Stereo Vision](https://en.wikipedia.org/wiki/Computer_stereo_vision)
 
-[Magnetometer API](https://github.com/keepworking/Mecha_QMC5883L)
+- [Magnetometer API](https://github.com/keepworking/Mecha_QMC5883L)
 
 
 
